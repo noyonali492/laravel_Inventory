@@ -332,17 +332,21 @@
                                     </div>
                                 </div>
                                 <!-- Left Sidebar End --> 
-
+                               
                         @endguest
                
         </div>
-
+   
+        
 
         <main class="py-4">
             @yield('content')
         </main>
     </div>
-
+    <footer class="footer text-right">
+        2015 © Moltran.
+    </footer>
+ 
     
     <script>
         var resizefunc = [];
