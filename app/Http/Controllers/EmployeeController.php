@@ -23,7 +23,7 @@ class EmployeeController extends Controller
     public function store(Request $request){        
    
 
-        dd($request->all());
+        //dd($request->all());
         $employee = new employee();
         $employee->name = $request->name;
         $employee->email = $request->email;
@@ -39,17 +39,13 @@ class EmployeeController extends Controller
         $image = $request->file('image');
         $file_extention = $request->file('image')->extension();
         $file_name = Carbon::now()->timestamp . '.' . $file_extention;        
-        $this->GenerateBrandThumbailImage($image,$file_name);
+        $this->GenerateEmployeeThumbailImage($image,$file_name);
         $employee->photo = $file_name;        
         $employee->save();
-        return redirect()->route('admin.brands')->with('status','Record has been added successfully !');
+        return redirect()->route('add.empolyee')->with('status','Record has been added successfully !');
     }
 
-
-
-
-
-public function GenerateBrandThumbailImage($image, $imageName){
+public function GenerateEmployeeThumbailImage($image, $imageName){
 
         $destinationPath = public_path('uploads/employees');
         $img= Image::read($image->path());
