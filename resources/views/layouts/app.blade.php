@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="{{ asset('Admin/images/favicon_1.ico') }}">
         <!-- Base Css Files -->
         <link href="{{ asset('Admin/css/bootstrap.min.css') }}" rel="stylesheet" />
-
+        <script src="https://kit.fontawesome.com/cb4bbf46f0.js" crossorigin="anonymous"></script>
         <!-- Font Icons -->
         <link href="{{ asset('Admin/assets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
         <link href="{{ asset('Admin/assets/ionicon/css/ionicons.min.css') }}" rel="stylesheet" />
@@ -193,11 +193,10 @@
                                                 </li>
 
                                                 <li class="has_sub">
-                                                    <a href="#" class="waves-effect"><i class="md md-mail"></i><span> Mail </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                                    <a href="#" class="waves-effect"><i class="fa-solid fa-users"></i><span> Employess </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                                     <ul class="list-unstyled">
-                                                        <li><a href="inbox.html">Inbox</a></li>
-                                                        <li><a href="email-compose.html">Compose Mail</a></li>
-                                                        <li><a href="email-read.html">View Mail</a></li>
+                                                        <li><a href="{{ route('add.empolyee') }}">Add New</a></li>
+                                                        <li><a href="#">All Employees </a></li>
                                                     </ul>
                                                 </li>
 
@@ -343,10 +342,6 @@
             @yield('content')
         </main>
     </div>
-    <footer class="footer text-right">
-        2015 © Moltran.
-    </footer>
- 
     
     <script>
         var resizefunc = [];
