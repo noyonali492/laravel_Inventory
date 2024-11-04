@@ -14,10 +14,15 @@ class EmployeeController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
+
+    public function allEmployees(){
+        $employees = employee::orderBy('id','DESC')->get();
+        return view('all_employee',compact('employees'));
+    }
     public function index(){
-        $employees = employee::orderBy('id','DESC')->paginate(10);
         
-        return view('add_employee',compact('employees'));
+        
+        return view('add_employee');
     }
 
     public function store(Request $request){        

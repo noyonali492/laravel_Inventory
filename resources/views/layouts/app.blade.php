@@ -17,6 +17,7 @@
 
         <link rel="shortcut icon" href="{{ asset('Admin/images/favicon_1.ico') }}">
         <!-- Base Css Files -->
+        <link href="{{ asset('Admin/assets/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('Admin/css/bootstrap.min.css') }}" rel="stylesheet" />
         <script src="https://kit.fontawesome.com/cb4bbf46f0.js" crossorigin="anonymous"></script>
         <!-- Font Icons -->
@@ -198,7 +199,7 @@
                                                     <a href="#" class="waves-effect"><i class="fa-solid fa-users"></i><span> Employess </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                                     <ul class="list-unstyled">
                                                         <li><a href="{{ route('add.empolyee') }}">Add New</a></li>
-                                                        <li><a href="#">All Employees </a></li>
+                                                        <li><a href="{{ route('all.empolyee') }}">All Employees </a></li>
                                                     </ul>
                                                 </li>
 
@@ -392,6 +393,17 @@
 
     <!-- Todo -->
     <script src="{{ asset('Admin/js/jquery.todo.js') }}"></script>
+
+
+    <script src="{{ asset('Admin/assets/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('Admin/assets/datatables/dataTables.bootstrap.js') }}"></script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#datatable').dataTable();
+            } );
+        </script>
 
     <script type="text/javascript">
         /* ==============================================
