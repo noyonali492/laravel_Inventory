@@ -12,6 +12,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+      </script> 
 
         <link rel="shortcut icon" href="{{ asset('Admin/images/favicon_1.ico') }}">
         <!-- Base Css Files -->
@@ -362,8 +364,8 @@
     <script src="{{ asset('Admin/assets/jquery-blockui/jquery.blockUI.js') }}"></script>
 
     <!-- sweet alerts -->
-    <script src="{{ asset('Admin/') }}assets/sweet-alert/sweet-alert.min.js"></script>
-    <script src="{{ asset('Admin/') }}assets/sweet-alert/sweet-alert.init.js"></script>
+    <script src="{{ asset('Admin/assets/sweet-alert/sweet-alert.min.js') }}"></script>
+    <script src="{{ asset('Admin/assets/sweet-alert/sweet-alert.init.js') }}"></script>
 
     <!-- flot Chart -->
     <script src="{{ asset('Admin/assets/flot-chart/jquery.flot.js') }}"></script>

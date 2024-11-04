@@ -16,3 +16,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Employees Route Are Here
 Route::get('/add-employee', [EmployeeController::class, 'index'])->name('add.empolyee');
+Route::post('/insert-employee', [EmployeeController::class, 'store'])->name('insert.empolyee');
