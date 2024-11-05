@@ -33,7 +33,7 @@
                                                 <th>phone</th>
                                                 <th>Photo</th>
                                                 <th>address</th>
-                                                <th>shopename</th>
+                                                <th>shop</th>
                                                 <th>City</th>
                                                 <th>action</th>
                                                 
@@ -42,14 +42,14 @@
 
                                  
                                         <tbody>
-                                           @foreach ($customers as $row)
+                                           @foreach ($suppliers as $row)
                                            <tr>
                                             <td>{{ $row->name }}</td>
                                             <td>{{ $row->email }}</td>
                                             <td>{{ $row->phone }}</td>
-                                            <td><img src="{{asset('uploads/customers')}}/{{$row->photo}}" alt="" class="image"></td>
+                                            <td><img src="{{asset('uploads/suppliers')}}/{{$row->photo}}" alt="" class="image"></td>
                                             <td>{{ $row->address }}</td>
-                                            <td>{{ $row->shopename }}</td>
+                                            <td>{{ $row->shope }}</td>
                                             
                                             
                                             <td>{{ $row->city }}</td>
