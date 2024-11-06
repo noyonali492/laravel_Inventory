@@ -5,6 +5,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\AdvanceSalaerController;
 
 Route::get('/', function () {
     // return view('welcome');
@@ -37,3 +38,8 @@ Route::get('/all-supplier', [SupplierController::class, 'allSupplier'])->name('a
 Route::get('/add-salary', [SalaryController::class, 'index'])->name('add.salary');
 Route::post('/insert-salary', [SalaryController::class, 'store'])->name('insert.salary');
 Route::get('/all-salary', [SalaryController::class, 'allSalary'])->name('all.salary');
+
+//Supplier Route Are Here
+Route::get('/add-advance-salary', [AdvanceSalaerController::class, 'index'])->name('add.advance.salary');
+Route::post('/insert-advance-salary', [AdvanceSalaerController::class, 'store'])->name('insert.advance.salary');
+Route::get('/all-advance-salary', [AdvanceSalaerController::class, 'allSalary'])->name('all.advance.salary');

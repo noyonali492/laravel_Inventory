@@ -23,9 +23,9 @@
                 <div class="col-md-2"> </div>
                 <div class="col-md-6">
                     <div class="panel panel-default">
-                        <div class="panel-heading"><h3 class="panel-title">Salary Provide</h3></div>
+                        <div class="panel-heading"><h3 class="panel-title">Advance Salary Provide</h3></div>
                         <div class="panel-body">
-                            <form role="form" method="POST" action="{{ route('insert.salary') }}" enctype="multipart/form-data">
+                            <form role="form" method="POST" action="{{ route('insert.advance.salary') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Employee</label>
@@ -44,6 +44,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Month</label>
                                     <select name="month" class="form-control">
+                                        <option disabled="" selected></option>
                                         <option value="January">January</option>
                                         <option value="February"> February</option>
                                         <option value="March">March</option>
@@ -58,10 +59,16 @@
                                         <option value="December">December</option>
                                     </select>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">advance_salary</label>
+                                    <input type="text" name="advance_salary" class="form-control" id="exampleInputPassword1" placeholder="advance_salary">
+                                </div>
                                
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">year</label>
                                     <select name="year" class="form-control">
+                                        <option disabled="" selected></option>
                                         <option value="2000">2000</option>
                                         <option value="20001"> 20001</option>
                                         <option value="20002">20002</option>
@@ -76,14 +83,7 @@
                                         <option value="2024">2024</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">status</label>
-                                    <input type="text" name="status" class="form-control" id="exampleInputPassword1" placeholder="status">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">advance_salary</label>
-                                    <input type="text" name="advance_salary" class="form-control" id="exampleInputPassword1" placeholder="advance_salary">
-                                </div>
+                              
                                 
                                 <button type="submit" class="btn btn-purple waves-effect waves-light">Submit</button>
                             </form>
