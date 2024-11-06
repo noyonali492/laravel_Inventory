@@ -23,14 +23,25 @@ class AdvanceSalaerController extends Controller
     public function store(Request $request){        
    
 
-        //dd($request->all());
-        $supplier = new AdvanceSalary();
-        $supplier->emp_id = $request->emp_id;
-        $supplier->month = $request->month;
-        $supplier->advance_salary = $request->advance_salary;
-        $supplier->year = $request->year;     
-        $supplier->save();
+        $month =$request->month;
+        $emp_id =$request->emp_id;
+        $advancesalary = AdvanceSalary::where('month',$month)
+        ->where('emp_id',$emp_id)
+        ->first();
+
+        if ($advancesalary == null) {
+            $advancesalary = new AdvanceSalary();
+        $advancesalary->emp_id = $request->emp_id;
+        $advancesalary->month = $request->month;
+        $advancesalary->advance_salary = $request->advance_salary;
+        $advancesalary->year = $request->year;     
+        $advancesalary->save();
         return redirect()->route('add.advance.salary')->with('status','Record has been added successfully !');
+        }else{
+            return redirect()->route('add.advance.salary')->with('status','Salary already advance  !');
+        }
+      
+       
     }
 
 }

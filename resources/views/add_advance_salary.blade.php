@@ -22,6 +22,10 @@
             <div class="row">
                 <div class="col-md-2"> </div>
                 <div class="col-md-6">
+                    @if(Session::has('status'))
+                    <p class="alert alert-success">{{Session::get('status')}}</p>
+                @endif
+
                     <div class="panel panel-default">
                         <div class="panel-heading"><h3 class="panel-title">Advance Salary Provide</h3></div>
                         <div class="panel-body">
