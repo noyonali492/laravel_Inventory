@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SalaryController;
 
 Route::get('/', function () {
     // return view('welcome');
@@ -32,3 +33,7 @@ Route::get('/add-supplier', [SupplierController::class, 'index'])->name('add.sup
 Route::post('/insert-supplier', [SupplierController::class, 'store'])->name('insert.supplier');
 Route::get('/all-supplier', [SupplierController::class, 'allSupplier'])->name('all.supplier');
 
+//Supplier Route Are Here
+Route::get('/add-salary', [SalaryController::class, 'index'])->name('add.salary');
+Route::post('/insert-salary', [SalaryController::class, 'store'])->name('insert.salary');
+Route::get('/all-salary', [SalaryController::class, 'allSalary'])->name('all.salary');
