@@ -226,6 +226,16 @@
                                                         <li><a href="{{ route('add.salary') }}">Add salary</a></li>
                                                         <li><a href="{{ route('add.advance.salary') }}">Advance_salary</a></li>
                                                         <li><a href="{{ route('all.salary') }}">All salary </a></li>
+                                                        <li><a href="{{ route('pay.salary') }}">Pay salary </a></li>
+                                                    </ul>
+                                                </li>
+
+                                                
+                                                <li class="has_sub">
+                                                    <a href="#" class="waves-effect"><i class="fa-solid fa-users"></i><span> Category </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="{{ route('add.category') }}">Add Category</a></li>
+                                                        <li><a href="{{ route('all.category') }}">All Category </a></li>
                                                     </ul>
                                                 </li>
 

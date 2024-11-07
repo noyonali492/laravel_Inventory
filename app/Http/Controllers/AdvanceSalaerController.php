@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AdvanceSalary;
+use App\Models\employee;
+use DB;
 
 class AdvanceSalaerController extends Controller
 {
@@ -12,8 +14,13 @@ class AdvanceSalaerController extends Controller
     }
 
     public function allSalary(){
-        $advancesalarys = AdvanceSalary::orderBy('id','DESC')->get();
-        return view('advancesalary',compact('advancesalarys'));
+        $salary=DB::table('advance_salaries')
+        ->join('employees','advance_salaries.emp_id','employees.id')
+        ->select('advance_salaries.*','employees.name','employees.salary','employees.photo')
+        ->orderBy('id','DESC')
+        ->get();
+       
+        return view('all_salary',compact('salary'));
     }
     public function index(){
         
@@ -36,12 +43,17 @@ class AdvanceSalaerController extends Controller
         $advancesalary->advance_salary = $request->advance_salary;
         $advancesalary->year = $request->year;     
         $advancesalary->save();
-        return redirect()->route('add.advance.salary')->with('status','Record has been added successfully !');
+        return redirect()->route('all.salary')->with('status','Record has been added successfully !');
         }else{
-            return redirect()->route('add.advance.salary')->with('status','Salary already advance  !');
+            return redirect()->route('all.salary')->with('status','Salary already advance  !');
         }
       
        
+    }
+
+    public function PaySalary(){
+        $employees = employee::all();
+        return view('pay_salary',compact('employees'));
     }
 
 }

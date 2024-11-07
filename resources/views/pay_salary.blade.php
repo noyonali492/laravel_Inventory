@@ -20,8 +20,8 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">All Employess</h3>
-                        </div>
+                            <h3 class="panel-title">Pay Salaly <span class="pull-right text-danger">{{ Date('F Y') }}</span></h3>
+                            </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -32,9 +32,6 @@
                                                 <th>photo</th>
                                                 <th>Salary</th>
                                                 <th>Month</th>
-                                                <th>Advance </th>
-                                                
-                                               
                                                 
                                                 <th>action</th>
                                                 
@@ -43,31 +40,21 @@
 
                                  
                                         <tbody>
-                                           @foreach ($salary as $row)
+                                           @foreach ($employees as $row)
                                            <tr>
                                             <td>{{ $row->name }}</td>
                                             <td><img src="{{asset('uploads/employees')}}/{{$row->photo}}" alt="" class="image"></td>
                                             <td>{{ $row->salary }}</td>
-                                            <td>{{ $row->month }}</td>
-                                          
-                                            <td>{{ $row->advance_salary }}</td>
+                                            <td><span class="badge badge-success">
+                                                {{ date("F", strtotime('-1 month')) }}</span></td>
                                             <td>
                                                 
-                                                     <div class="list-icon-function">
+                                                     <div>
                                                         {{-- {{route('admin.product.edit',['id'=>$product->id])}} --}}
-                                                        <a href="#">
-                                                            <div class="item edit">
-                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                             </div>
+                                                        <a class="btn btn-sm btn-primary" href="#">
+                                                           Pay Salary
                                                         </a>
-                                                        {{-- {{route('admin.product.delete',['id'=>$product->id])}} --}}
-                                                        <form action="#" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <div class="item text-danger delete">
-                                                                <i class="fa-solid fa-trash"></i>
-                                                            </div>
-                                                        </form>
+                                                        
                                                      </div>
                                                 
                                             </td>

@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('salaries', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('emp_id');
-            $table->string('salary_month');
-            $table->string('advance_salary');
-            $table->string('year')->nullable();
-            $table->string('status')->default('0');
-            
+            $table->string('cat_name');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('salaries');
+        Schema::dropIfExists('categories');
     }
 };

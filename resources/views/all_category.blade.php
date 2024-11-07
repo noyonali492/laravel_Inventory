@@ -20,7 +20,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">All Employess</h3>
+                            <h3 class="panel-title">All Category</h3>
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -28,29 +28,17 @@
                                     <table id="datatable" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>photo</th>
-                                                <th>Salary</th>
-                                                <th>Month</th>
-                                                <th>Advance </th>
-                                                
-                                               
+                                                <th>Category Name</th>
                                                 
                                                 <th>action</th>
                                                 
                                             </tr>
                                         </thead>
 
-                                 
                                         <tbody>
-                                           @foreach ($salary as $row)
+                                           @foreach ($categorics as $row)
                                            <tr>
-                                            <td>{{ $row->name }}</td>
-                                            <td><img src="{{asset('uploads/employees')}}/{{$row->photo}}" alt="" class="image"></td>
-                                            <td>{{ $row->salary }}</td>
-                                            <td>{{ $row->month }}</td>
-                                          
-                                            <td>{{ $row->advance_salary }}</td>
+                                            <td>{{ $row->cat_name }}</td>
                                             <td>
                                                 
                                                      <div class="list-icon-function">

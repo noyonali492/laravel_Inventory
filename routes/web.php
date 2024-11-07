@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\AdvanceSalaerController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     // return view('welcome');
@@ -37,9 +38,16 @@ Route::get('/all-supplier', [SupplierController::class, 'allSupplier'])->name('a
 //Supplier Route Are Here
 Route::get('/add-salary', [SalaryController::class, 'index'])->name('add.salary');
 Route::post('/insert-salary', [SalaryController::class, 'store'])->name('insert.salary');
-Route::get('/all-salary', [SalaryController::class, 'allSalary'])->name('all.salary');
+// Route::get('/all-salary', [SalaryController::class, 'allSalary'])->name('all.salary');
 
 //Supplier Route Are Here
 Route::get('/add-advance-salary', [AdvanceSalaerController::class, 'index'])->name('add.advance.salary');
 Route::post('/insert-advance-salary', [AdvanceSalaerController::class, 'store'])->name('insert.advance.salary');
-Route::get('/all-advance-salary', [AdvanceSalaerController::class, 'allSalary'])->name('all.advance.salary');
+Route::get('/all-advance-salary', [AdvanceSalaerController::class, 'allSalary'])->name('all.salary');
+Route::get('/pay-salary', [AdvanceSalaerController::class, 'PaySalary'])->name('pay.salary');
+
+
+//Category Route Are Here
+Route::get('/add-category', [CategoryController::class, 'index'])->name('add.category');
+Route::post('/insert-category', [CategoryController::class, 'store'])->name('insert.category');
+Route::get('/all-Category', [CategoryController::class, 'allCategory'])->name('all.category');
