@@ -20,7 +20,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">All Category</h3>
+                            <h3 class="panel-title">All Product</h3>
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -28,19 +28,33 @@
                                     <table id="datatable" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Id</th>
-                                                <th>Category Name</th>
+                                                <th>Name</th>
+                                                <th>CAT</th>
+                                                <th>SUP</th>
+                                                <th> Image</th>
+                                                <th>buy_date</th>
+                                                <th>expire_date</th>
+                                                <th>selling_price</th>
+                                               
                                                 
                                                 <th>action</th>
                                                 
                                             </tr>
                                         </thead>
 
+                                 
                                         <tbody>
-                                           @foreach ($categorics as $row)
+                                           @foreach ($products as $row)
                                            <tr>
-                                            <td>{{ $row->id }}</td>
-                                            <td>{{ $row->cat_name }}</td>
+                                            <td>{{ $row->product_name }}</td>
+                                            <td>{{ $row->cat_id }}</td>
+                                            <td>{{ $row->sup_id }}</td>
+                                            <td><img src="{{asset('uploads/products')}}/{{$row->product_image}}" alt="" class="image"></td>
+                                            <td>{{ $row->buy_date }}</td>
+                                            <td>{{ $row->expire_date }}</td>
+                                            
+                                            
+                                            <td>{{ $row->selling_price }}</td>
                                             <td>
                                                 
                                                      <div class="list-icon-function">

@@ -7,7 +7,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\AdvanceSalaerController;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     // return view('welcome');
     return redirect()->route('login');
@@ -51,3 +51,9 @@ Route::get('/pay-salary', [AdvanceSalaerController::class, 'PaySalary'])->name('
 Route::get('/add-category', [CategoryController::class, 'index'])->name('add.category');
 Route::post('/insert-category', [CategoryController::class, 'store'])->name('insert.category');
 Route::get('/all-Category', [CategoryController::class, 'allCategory'])->name('all.category');
+
+
+//Category Route Are Here
+Route::get('/add-product', [ProductController::class, 'index'])->name('add.product');
+Route::post('/insert-product', [ProductController::class, 'store'])->name('insert.product');
+Route::get('/all-product', [ProductController::class, 'allProduct'])->name('all.product');

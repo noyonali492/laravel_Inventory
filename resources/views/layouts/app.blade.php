@@ -239,6 +239,14 @@
                                                     </ul>
                                                 </li>
 
+                                                <li class="has_sub">
+                                                    <a href="#" class="waves-effect"><i class="fa-solid fa-users"></i><span> Product </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="{{ route('add.product') }}">Add Product</a></li>
+                                                        <li><a href="{{ route('all.product') }}">All Product </a></li>
+                                                    </ul>
+                                                </li>
+
                                                 <li>
                                                     <a href="calendar.html" class="waves-effect"><i class="md md-event"></i><span> Calendar </span></a>
                                                 </li>
