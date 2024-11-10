@@ -8,6 +8,11 @@ use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\AdvanceSalaerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ExpenseController;
+
+
+
+
 Route::get('/', function () {
     // return view('welcome');
     return redirect()->route('login');
@@ -57,3 +62,8 @@ Route::get('/all-Category', [CategoryController::class, 'allCategory'])->name('a
 Route::get('/add-product', [ProductController::class, 'index'])->name('add.product');
 Route::post('/insert-product', [ProductController::class, 'store'])->name('insert.product');
 Route::get('/all-product', [ProductController::class, 'allProduct'])->name('all.product');
+
+//Expense Route Are Here
+Route::get('/add-expense', [ExpenseController::class, 'index'])->name('add.expense');
+Route::post('/insert-expense', [ExpenseController::class, 'store'])->name('insert.expense');
+Route::get('/all-expense', [ExpenseController::class, 'allExpense'])->name('all.expense');
