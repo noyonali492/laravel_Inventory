@@ -9,7 +9,7 @@ use App\Http\Controllers\AdvanceSalaerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ExpenseController;
-
+use App\Http\Controllers\AttendencController;
 
 
 
@@ -67,3 +67,14 @@ Route::get('/all-product', [ProductController::class, 'allProduct'])->name('all.
 Route::get('/add-expense', [ExpenseController::class, 'index'])->name('add.expense');
 Route::post('/insert-expense', [ExpenseController::class, 'store'])->name('insert.expense');
 Route::get('/all-expense', [ExpenseController::class, 'allExpense'])->name('all.expense');
+
+
+//attendence Route Are Here
+Route::get('/take-attendence', [AttendencController::class, 'TakeAttendence'])->name('take.attendence');
+Route::get('/add-attendence', [AttendencController::class, 'index'])->name('add.attendence');
+Route::post('/insert-attendence', [AttendencController::class, 'store'])->name('insert.attendence');
+Route::get('/all-attendence', [AttendencController::class, 'allAttendence'])->name('all.attendence');
+
+
+
+;
