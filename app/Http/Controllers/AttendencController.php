@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\CatAttendencegory;
+use App\Models\Attendenc;
+use App\Models\Category;
 use DB;
 class AttendencController extends Controller
 
@@ -18,10 +19,11 @@ class AttendencController extends Controller
         return view('take_attendence',compact('employee'));
     }
 
-    // public function allAttendence(){
-    //     $attendencs = Attendenc::orderBy('id','DESC')->get();
-    //     return view('all_attendence',compact('attendencs'));
-    // }
+    public function allAttendence(){
+
+        $all_att = Attendenc::select('edit_date')->groupBy('edit_date')->get();
+        return view('all_attendence',compact('all_att'));
+    }
     // public function index(){
         
         

@@ -49,8 +49,8 @@
                                             <input type="hidden" name="user_id[]" value="{{ $row->id }}">
                                             <td>
 
-                                                <input type="radio" name="attendece[{{ $row->id }}]" value="present">Present
-                                                <input type="radio" name="attendece[{{ $row->id }}]" value="absence">Absence
+                                                <input type="radio" required name="attendece[{{ $row->id }}]" value="present">Present
+                                                <input type="radio" required name="attendece[{{ $row->id }}]" value="absence">Absence
 
                                                 <input type="hidden" name="att_date" value="{{ date('d/m/y') }}">
                                                 <input type="hidden" name="att_year" value="{{ date('Y') }}">
