@@ -11,7 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\AttendencController;
 
-
+use App\Http\Controllers\SettingController;
 
 Route::get('/', function () {
     // return view('welcome');
@@ -76,5 +76,7 @@ Route::post('/insert-attendence', [AttendencController::class, 'store'])->name('
 Route::get('/all-attendence', [AttendencController::class, 'allAttendence'])->name('all.attendence');
 
 
+//setting
 
-;
+Route::get('/setting', [SettingController::class, 'index'])->name('setting');
+Route::post('/add-setting', [SettingController::class, 'store'])->name('insert.setting');
