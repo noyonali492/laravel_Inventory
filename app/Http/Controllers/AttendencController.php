@@ -18,27 +18,36 @@ class AttendencController extends Controller
         return view('take_attendence',compact('employee'));
     }
 
-    public function allAttendence(){
-        $attendencs = Attendenc::orderBy('id','DESC')->get();
-        return view('all_attendence',compact('attendencs'));
-    }
-    public function index(){
+    // public function allAttendence(){
+    //     $attendencs = Attendenc::orderBy('id','DESC')->get();
+    //     return view('all_attendence',compact('attendencs'));
+    // }
+    // public function index(){
         
         
-        return view('add_attendence');
-    }
+    //     return view('add_attendence');
+    // }
 
     public function store(Request $request){        
-   
+        $data=$request->att_date;
+        $att_date=DB::table('attendencs')->where('att_date',$data)->first();
 
-        $attendencs = new Attendenc();
-        $attendencs->user_id = $request->user_id;
-        $attendencs->att_date = $request->att_date;
-        $attendencs->att_year = $request->att_year;
-        $attendencs->attendece = $request->attendece;
-
-        $attendencs->save();
-        return redirect()->route('all.category')->with('status','Record has been added successfully !');
+        if ($att_date) {
+            return redirect()->back()->with('status','Record has been already Added !');
+        }else{
+            foreach($request->user_id as $id){
+                $data[]=[ 
+                   "user_id"=>$id,
+                    "attendece"=>$request->attendece[$id],
+                   "att_date"=>$request->att_date,
+                    "att_year"=>$request->att_year,
+                    "edit_date"=>date("d_m_y"),
+                ];
+            }
+            $att=DB::table('attendencs')->insert($data);
+         return redirect()->back()->with('status','Record has been added successfully !');
+        }
+ 
     }
 
 }

@@ -21,6 +21,9 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">Tack Attendence</h3>
+                            @if(Session::has('status'))
+                            <p class="alert alert-success">{{Session::get('status')}}</p>
+                        @endif
                         </div>
                         <h3 class="text-success">{{ date("d/m/y") }}</h3>
                         <div class="panel-body">
@@ -37,17 +40,17 @@
 
                                  
                                         <tbody>
-                                            <form action="route('insert.attendence')" method="POST">
+                                <form method="POST" action="{{ route('insert.attendence') }}">
                                                 @csrf
                                            @foreach ($employee as $row)
                                            <tr>
                                             <td>{{ $row->name }}</td>
                                             <td><img src="{{asset('uploads/employees')}}/{{$row->photo}}" style="width: 60px; height:60px;" alt="" class="image"></td>
-                                            <input type="hidden" name="user_id" value="{{ $row->id }}">
+                                            <input type="hidden" name="user_id[]" value="{{ $row->id }}">
                                             <td>
 
-                                                <input type="radio" name="attendece" value="present">Present
-                                                <input type="radio" name="attendece" value="absence">Absence
+                                                <input type="radio" name="attendece[{{ $row->id }}]" value="present">Present
+                                                <input type="radio" name="attendece[{{ $row->id }}]" value="absence">Absence
 
                                                 <input type="hidden" name="att_date" value="{{ date('d/m/y') }}">
                                                 <input type="hidden" name="att_year" value="{{ date('Y') }}">
