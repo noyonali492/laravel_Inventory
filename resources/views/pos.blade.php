@@ -61,6 +61,43 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="price_card text-center">
+                           
+                            <ul class="price-features" style="border:1px solid grey;">
+                                <table class="table">
+                                    <thead class="bg-info">
+                                        <tr>
+                                            <th class="text-white">Name</th>
+                                            <th class="text-white">Qty</th>
+                                            <th class="text-white">Price</th>
+                                            <th class="text-white">Sub Total</th>
+                                            <th class="text-white">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Rospa </th>
+                                            <th><input style="width: 30px" type="number" name="" value="2"> </th>
+                                            <th>2200</th>
+                                            <th>4400</th>
+                                            <th><div class="item text-danger delete">
+                                                <i class="fa-solid fa-trash"></i>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                              
+                            </ul>
+                            <div class="pricing-header bg-primary">
+                                <p style="font-size:19px ">Qty: 00.00</p>
+                                <p style="font-size:19px ">Product: 00.00</p>
+                                <p style="font-size:19px ">Vat: 00.00</p>
+                                <p><h2 class="text-white">Total:</h2> <h1 class="text-white">00.00</h1></p>
+                               
+                                <button class="btn btn-success">Create Invoice</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-8">
                         <table id="datatable" class="table table-striped table-bordered">
@@ -113,10 +150,8 @@
                             </tbody>
                         </table>
                     </div>
+                    
                 </div>
-
-
-
         </div> <!-- container -->
                    
     </div> <!-- content -->
@@ -197,23 +232,25 @@
                 </div> 
 
                 <div class="row"> 
-                    <div class="col-md-4"> 
-                        <div class="form-group"> 
-                            <label for="field-4" class="control-label">n</label> 
-                            <input type="text" class="form-control" id="field-4" placeholder="Name"> 
-                        </div> 
-                    </div> 
-                    <div class="col-md-4"> 
-                        <div class="form-group"> 
-                            <label for="field-5" class="control-label">n</label> 
-                            <input type="text" class="form-control" id="field-5" placeholder="Email"> 
-                        </div> 
-                    </div> 
-                    <div class="col-md-4"> 
-                        <div class="form-group"> 
-                            <label for="field-6" class="control-label">Photo</label> 
-                            <input type="file" class="form-control" id="field-6" placeholder="123456"> 
-                        </div> 
+                    
+                    <div class="col-md-10"> 
+                        <fieldset>
+                            <div class="body-title">Upload images <span class="tf-color-1">*</span></div>
+                            <div class="upload-image flex-grow">
+                                <div class="item" id="imgpreview" style="display:none">                            
+                                    <img src="upload-1.html" class="effect8" alt="">
+                                </div>
+                                <div id="upload-file" class="item up-load">
+                                    <label class="uploadfile" for="myFile">
+                                        <span class="icon">
+                                            <i class="icon-upload-cloud"></i>
+                                        </span>
+                                        <span class="body-text">Drop your images here or select <span class="tf-color">click to browse</span></span>
+                                        <input type="file" id="myFile" name="product_image" accept="image/*">
+                                    </label>
+                                </div>
+                            </div>                    
+                        </fieldset> 
                     </div> 
                 </div> 
               
@@ -226,4 +263,29 @@
     </div>
 </div>
 </form>
+
+
+
+<script>
+    $(function(){
+        $("#myFile").on("change",function(e){
+            const photoInp = $("#myFile");                    
+            const [file] = this.files;
+            if (file) {
+                $("#imgpreview img").attr('src',URL.createObjectURL(file));
+                $("#imgpreview").show();                        
+            }
+        }); 
+
+        $("input[name='name']").on("change",function(){
+            $("input[name='slug']").val(StringToSlug($(this).val()));
+        });
+        
+    });
+    function StringToSlug(Text) {
+        return Text.toLowerCase()
+        .replace(/[^\w ]+/g, "")
+        .replace(/ +/g, "-");
+    }      
+</script>
 @endsection
