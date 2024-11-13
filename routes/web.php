@@ -9,8 +9,8 @@ use App\Http\Controllers\AdvanceSalaerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\PosController;
 use App\Http\Controllers\AttendencController;
-
 use App\Http\Controllers\SettingController;
 
 Route::get('/', function () {
@@ -80,3 +80,6 @@ Route::get('/all-attendence', [AttendencController::class, 'allAttendence'])->na
 
 Route::get('/setting', [SettingController::class, 'index'])->name('setting');
 Route::post('/add-setting', [SettingController::class, 'store'])->name('insert.setting');
+
+//posh 
+Route::get('/pos', [PosController::class, 'index'])->name('pos');

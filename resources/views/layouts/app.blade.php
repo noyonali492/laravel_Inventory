@@ -173,7 +173,7 @@
                                                     <a href="{{ route('home') }}" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('home') }}" class="waves-effect"><i class="md md-home"></i><span class="text-primary"> <b>POS</b> </span></a>
+                                                    <a href="{{ route('pos') }}" class="waves-effect"><i class="md md-home"></i><span class="text-primary"> <b>POS</b> </span></a>
                                                 </li>
 
                                                 <li class="has_sub">
