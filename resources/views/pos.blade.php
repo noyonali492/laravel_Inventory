@@ -77,7 +77,12 @@
                                     <tbody>
                                         <tr>
                                             <th>Rospa </th>
-                                            <th><input style="width: 30px" type="number" name="" value="2"> </th>
+                                            <th>
+                                                <form>
+                                                    <input style="width: 40px" type="number" name="" value="2">
+                                                    <button style="margin-top: -3px" type="submit" name="submit" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
+                                                </form>
+                                            </th>
                                             <th>2200</th>
                                             <th>4400</th>
                                             <th><div class="item text-danger delete">
