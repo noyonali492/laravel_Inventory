@@ -47,7 +47,7 @@
             </div>
             <br>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="panel">
                             <h4 class="text-info"> Customer
                                 <a href="#" class="btn btn-sm btn-primary waves-effect waves-light pull-right" data-toggle="modal" data-target="#con-close-modal">Add New</a>
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-6">
                         <table id="datatable" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -158,7 +158,7 @@
 </div>
 
 <!-- customer add modal-->
-<form action="" method="POST" enctype="multipart/form-data">
+<form role="form" method="POST" action="{{ route('insert.customer') }}" enctype="multipart/form-data">
     @csrf
 <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog"> 
@@ -167,6 +167,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
                 <h4 class="modal-title">Add a New Customer</h4> 
             </div> 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="modal-body"> 
                <div class="row"> 
                     <div class="col-md-4"> 
@@ -246,7 +255,7 @@
                                             <i class="icon-upload-cloud"></i>
                                         </span>
                                         <span class="body-text">Drop your images here or select <span class="tf-color">click to browse</span></span>
-                                        <input type="file" id="myFile" name="product_image" accept="image/*">
+                                        <input type="file" id="myFile" name="image" accept="image/*">
                                     </label>
                                 </div>
                             </div>                    
@@ -257,7 +266,7 @@
             </div> 
             <div class="modal-footer"> 
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button> 
-                <button type="button" class="btn btn-info waves-effect waves-light">Save changes</button> 
+                <button type="submit" class="btn btn-purple waves-effect waves-light">Save Customer</button> 
             </div> 
         </div> 
     </div>

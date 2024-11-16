@@ -50,7 +50,7 @@ class CustomerController extends Controller
         $this->GenerateCustomerImage($image,$file_name);
         $customer->photo = $file_name;        
         $customer->save();
-        return redirect()->route('all.customer')->with('status','Record has been added successfully !');
+        return redirect()->back()->with('status','Record has been added successfully !');
     }
 
 public function GenerateCustomerImage($image, $imageName){
