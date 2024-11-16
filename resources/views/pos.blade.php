@@ -20,6 +20,7 @@
         </div>
     </div>
 </div> --}}
+                
 <div class="content-page">
     <!-- Start content -->
     <div class="content">
@@ -28,6 +29,11 @@
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12 bg-info">
+                    @if(Session::has('success'))
+                    <p class="text-success">{{Session::get('success')}}</p>
+                    @elseif(Session::has('error'))
+                    <p class="text-danger">{{Session::get('error')}}</p>
+                    @endif
                     <h4 class="pull-left text-white page-title">POS Point of Sale !</h4>
                     <ol class="breadcrumb pull-right">
                         <li><a href="#" class="text-white">Echovel</a></li>
@@ -75,30 +81,34 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($cartItems as $cart)
                                         <tr>
-                                            <th>Rospa </th>
+                                            
+                                            <th>{{ $cart->name }} </th>
                                             <th>
                                                 <form>
-                                                    <input style="width: 40px" type="number" name="" value="2">
+                                                    <input style="width: 40px" type="number" name="" value="1">
                                                     <button style="margin-top: -3px" type="submit" name="submit" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
                                                 </form>
                                             </th>
-                                            <th>2200</th>
+                                            <th>{{ $cart->price }}</th>
                                             <th>4400</th>
                                             <th><div class="item text-danger delete">
                                                 <i class="fa-solid fa-trash"></i>
                                                 </div>
                                             </th>
+                                            
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                               
                             </ul>
                             <div class="pricing-header bg-primary">
-                                <p style="font-size:19px ">Qty: 00.00</p>
-                                <p style="font-size:19px ">Product: 00.00</p>
-                                <p style="font-size:19px ">Vat: 00.00</p>
-                                <p><h2 class="text-white">Total:</h2> <h1 class="text-white">00.00</h1></p>
+                                <p style="font-size:19px ">Qty:{{Cart::instance('cart')->qty}}</p>
+                                <p style="font-size:19px ">Product:${{Cart::instance('cart')->subtotal()}}</p>
+                                <p style="font-size:19px ">{{Cart::instance('cart')->tax()}}</p>
+                                <p><h2 class="text-white">{{Cart::instance('cart')->subtotal()}}:</h2> <h1 class="text-white">00.00</h1></p>
                                
                                 <button class="btn btn-success">Create Invoice</button>
                             </div>
@@ -120,38 +130,29 @@
                             <tbody>
                                @foreach ($products as $row)
                                <tr>
-                                <td>
-                                    <a href="#" style="font-size: 20px"><i class="fas fa-plus-square"></i></a>
-                                    <img width="60px" height="60px" src="{{asset('uploads/products')}}/{{$row->product_image}}" alt="" class="image">
-                                
-                                </td>
-                                <td>{{ $row->product_name }}</td>
-                                <td>{{ $row->cat_name }}</td>
-                                <td>{{ $row->product_code }}</td>
-                                <td>
-                                    
-                                         <div class="list-icon-function">
-                                            {{-- {{route('admin.product.edit',['id'=>$product->id])}} --}}
-                                            <a href="#">
-                                                <div class="item edit">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
-                                                 </div>
-                                            </a>
-                                            {{-- {{route('admin.product.delete',['id'=>$product->id])}} --}}
-                                            <form action="#" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <div class="item text-danger delete">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </div>
-                                            </form>
-                                         </div>
-                                    
-                                </td>
-                               
-                            </tr>
+                                <form role="form" method="POST" action="{{ route('add.cart') }}" enctype="multipart/form-data">
+                                    @csrf
+                                        <input type="hidden" name="id" value="{{ $row->id }}">
+                                        <input type="hidden" name="name" value="{{ $row->product_name }}">
+                                        <input type="hidden" name="qty" value="1">
+                                        <input type="hidden" name="price" value="{{ $row->selling_price }}">
+
+                                        <td>
+                                            {{-- <a href="#" style="font-size: 20px"><i class="fas fa-plus-square"></i></a> --}}
+                                            <img width="60px" height="60px" src="{{asset('uploads/products')}}/{{$row->product_image}}" alt="" class="image">
+                                        
+                                        </td>
+                                        <td>{{ $row->product_name }}</td>
+                                        <td>{{ $row->cat_name }}</td>
+                                        <td>{{ $row->product_code }}</td>
+                                        <td>
+
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-plus-square"></i></button>
+                                        </td>
+                              
+                                    </form>
+                              </tr>
                                @endforeach
-                                
                             </tbody>
                         </table>
                     </div>

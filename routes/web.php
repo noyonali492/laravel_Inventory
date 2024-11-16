@@ -13,6 +13,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\PosController;
 use App\Http\Controllers\AttendencController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     // return view('welcome');
@@ -84,3 +85,9 @@ Route::post('/add-setting', [SettingController::class, 'store'])->name('insert.s
 
 //posh 
 Route::get('/pos', [PosController::class, 'index'])->name('pos');
+
+
+//cart controller 
+
+Route::post('/cart-add',[CartController::class, 'AddCart'])->name('add.cart');
+Route::get('/cart',[CartController::class,'index'])->name('cart.index');
