@@ -91,3 +91,4 @@ Route::get('/pos', [PosController::class, 'index'])->name('pos');
 
 Route::post('/cart-add',[CartController::class, 'AddCart'])->name('add.cart');
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+Route::post('/create/invoice',[CartController::class,'CreateInvoice'])->name('create.invoice');

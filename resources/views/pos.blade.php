@@ -42,7 +42,8 @@
                 </div>
             </div><br>
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 ">
+
+    <div class="col-lg-12 col-md-12 col-sm-12 ">
                     <div class="portfolioFilter">
                         @foreach ($categories as $row )
                             <a href="#" data-filter="*" class="current">{{ $row->cat_name }}</a> 
@@ -54,19 +55,19 @@
             <br>
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="panel">
+                        {{-- <div class="panel">
                             <h4 class="text-info"> Customer
                                 <a href="#" class="btn btn-sm btn-primary waves-effect waves-light pull-right" data-toggle="modal" data-target="#con-close-modal">Add New</a>
                             </h4>
                             <select class="form-control">
                                 <option disabled selected> Select customer</option>
-                                @foreach ($customers as $row)
+                                @foreach ($customers as $cus)
                                     
-                                <option>{{ $row->name }}</option>
+                                <option value="{{ $cus->id }}" >{{ $cus->name }}</option>
                                 
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="price_card text-center">
                            
                             <ul class="price-features" style="border:1px solid grey;">
@@ -108,15 +109,30 @@
                               
                             </ul>
                             <div class="pricing-header bg-primary">
-                                <p style="font-size:19px ">Qty:{{Cart::instance('cart')->qty}}</p>
-                                <p style="font-size:19px ">Product:{{Cart::instance('cart')->subtotal()}}</p>
-                                <p style="font-size:19px ">Vat {{Cart::instance('cart')->tax()}}</p>
-                                <p><h2 class="text-white"></h2> <h1 class="text-white">{{Cart::instance('cart')->subtotal()}}</h1></p>
-                               
-                                <button class="btn btn-success">Create Invoice</button>
+                                <p style="font-size:19px ">Qty:{{Cart::count()}}</p>
+                                <p style="font-size:19px ">Sub Total:{{Cart::subtotal()}}</p>
+                                <p style="font-size:19px ">Vat {{Cart::tax()}}</p>
+                                <p><h2 class="text-white"></h2> <h1 class="text-white">{{Cart::total()}}</h1></p>
+                                
                             </div>
-                        </div>
-                    </div>
+                            <form method="POST" action="{{ route('create.invoice') }}">
+                                    @csrf 
+                                    <div class="panel"><br><br>
+                                        <h4 class="text-info">Select Customer
+                                            <a href="#" class="btn btn-sm btn-primary waves-effect waves-light pull-right" data-toggle="modal" data-target="#con-close-modal">Add New</a>
+                                        </h4>
+                                        <select class="form-control" name="cus_id">
+                                            <option disabled selected> Select customer</option>
+                                            @foreach ($customers as $cus)
+                                             <option value="{{ $cus->id }}" >{{ $cus->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Create Invoice</button>
+                            
+                                </div>
+                                </div>
+                            </form>
                     <div class="col-lg-6">
                         <table id="datatable" class="table table-striped table-bordered">
                             <thead>

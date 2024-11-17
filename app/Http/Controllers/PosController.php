@@ -14,11 +14,11 @@ class PosController extends Controller
     }
 
     public function index(){
-        $cartItems = Cart::instance('cart')->content();
+        $cartItemss = Cart::instance('cart')->content();
         $products = Product::join('categories','products.cat_id','categories.id')
         ->select('categories.cat_name','products.*')->get();
         $customers = Customer::orderBy('id','DESC')->get();
         $categories = Category::orderBy('id','DESC')->get();
-        return view('pos',compact('products','customers','categories','cartItems'));
+        return view('pos',compact('products','customers','categories','cartItemss'));
     }
 }

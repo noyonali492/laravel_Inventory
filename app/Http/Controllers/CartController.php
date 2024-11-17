@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Cart;
+use App\Models\Product;
+use App\Models\Customer;
+use App\Models\Category;
+use Surfsidemedia\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
     public function __construct(){
@@ -33,5 +36,13 @@ class CartController extends Controller
         Cart::instance('cart')->add($request->id,$request->name,$request->qty,$request->price)->associate('App\Models\Product');        
         session()->flash('success', 'Product is Added to Cart Successfully !');        
         return Redirect()->back()->with(['status'=>200,'message'=>'Success ! Item Successfully added to your cart.']);
+    }
+
+
+    public function CreateInvoice(Request $request){
+  
+        $contents = Cart::instance('cart')->content();
+        $customer = Customer::where('id',$request->cus_id)->first();
+        return view('invoice',compact('contents','customer'));
     }
 }
