@@ -80,19 +80,22 @@
                                             <th class="text-white">Action</th>
                                         </tr>
                                     </thead>
+                                    @php
+                                        $cartproduct=Cart::content()
+                                    @endphp
                                     <tbody>
-                                        @foreach ($cartItems as $cart)
+                                        @foreach ($cartproduct as $cart)
                                         <tr>
                                             
                                             <th>{{ $cart->name }} </th>
                                             <th>
                                                 <form>
-                                                    <input style="width: 40px" type="number" name="" value="1">
+                                                    <input style="width: 40px" type="number" name="qty" value="{{ $cart->qty }}">
                                                     <button style="margin-top: -3px" type="submit" name="submit" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
                                                 </form>
                                             </th>
                                             <th>{{ $cart->price }}</th>
-                                            <th>4400</th>
+                                            <th>{{ $cart->price*$cart->qty }}</th>
                                             <th><div class="item text-danger delete">
                                                 <i class="fa-solid fa-trash"></i>
                                                 </div>
@@ -106,9 +109,9 @@
                             </ul>
                             <div class="pricing-header bg-primary">
                                 <p style="font-size:19px ">Qty:{{Cart::instance('cart')->qty}}</p>
-                                <p style="font-size:19px ">Product:${{Cart::instance('cart')->subtotal()}}</p>
-                                <p style="font-size:19px ">{{Cart::instance('cart')->tax()}}</p>
-                                <p><h2 class="text-white">{{Cart::instance('cart')->subtotal()}}:</h2> <h1 class="text-white">00.00</h1></p>
+                                <p style="font-size:19px ">Product:{{Cart::instance('cart')->subtotal()}}</p>
+                                <p style="font-size:19px ">Vat {{Cart::instance('cart')->tax()}}</p>
+                                <p><h2 class="text-white"></h2> <h1 class="text-white">{{Cart::instance('cart')->subtotal()}}</h1></p>
                                
                                 <button class="btn btn-success">Create Invoice</button>
                             </div>
