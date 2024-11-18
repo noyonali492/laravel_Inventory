@@ -87,8 +87,9 @@ Route::post('/add-setting', [SettingController::class, 'store'])->name('insert.s
 Route::get('/pos', [PosController::class, 'index'])->name('pos');
 
 
-//cart controller 
+//cart controller  
 
 Route::post('/cart-add',[CartController::class, 'AddCart'])->name('add.cart');
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
 Route::post('/create/invoice',[CartController::class,'CreateInvoice'])->name('create.invoice');
+Route::post('/final/invoice',[CartController::class,'FinalInvoice'])->name('final.invoice');

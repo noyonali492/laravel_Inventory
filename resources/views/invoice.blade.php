@@ -127,14 +127,15 @@
 
 
             <!--  add modal-->
-<form role="form" method="POST" action="" enctype="multipart/form-data">
+<form role="form" method="POST" action="{{ route('final.invoice') }}" enctype="multipart/form-data">
     @csrf
 <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog"> 
         <div class="modal-content"> 
             <div class="modal-header"> 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
-                <h4 class="modal-title text-info">Invoice Of {{ $customer->name }}</h4> 
+                <h4 class="modal-title text-info">Invoice Of {{ $customer->name }}
+                    <span class="pull-right">Total: {{ Cart::total() }}</span></h4> 
             </div> 
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -173,6 +174,13 @@
                     </div> 
                 </div> 
             </div> 
+            <input type="hidden" name="customer_id" value="{{ $customer->id }}">
+            <input type="hidden" name="order_date" value="{{ date('d/m/y') }}">
+            <input type="hidden" name="order_status" value="pending">
+            <input type="hidden" name="total_products" value="{{ Cart::count() }}">
+            <input type="hidden" name="sub_total" value="{{ Cart::subtotal() }}">
+            <input type="hidden" name="vat" value=" {{ Cart::tax() }}">
+            <input type="hidden" name="total" value="{{ Cart::total() }}">
             <div class="modal-footer"> 
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button> 
                 <button type="submit" class="btn btn-purple waves-effect waves-light">Save Customer</button> 
